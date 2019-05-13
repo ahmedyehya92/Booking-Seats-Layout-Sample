@@ -67,7 +67,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (seats.charAt(index) == '/') {
                 layout = new LinearLayout(this);
                 layout.setOrientation(LinearLayout.HORIZONTAL);
+                layout.setGravity(Gravity.CENTER_VERTICAL);
                 layoutSeat.addView(layout);
+                TextView view = new TextView(this);
+                view.setText("A");
+                layout.addView(view);
             } else if (seats.charAt(index) == 'U') {
                 count++;
                 TextView view = new TextView(this);
@@ -101,6 +105,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 view.setTag(STATUS_AVAILABLE);
                 layout.addView(view);
                 seatViewList.add(view);
+                view.setFocusable(true);
+                view.setFocusableInTouchMode(true);
+                if (count == 89) {
+                    view.requestFocus();
+
+                }
                 view.setOnClickListener(this);
             } else if (seats.charAt(index) == 'R') {
                 count++;
